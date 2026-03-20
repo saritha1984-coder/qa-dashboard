@@ -1,0 +1,41 @@
+name: Auto-Refresh QA Dashboard
+on:
+  schedule:
+      - cron: '*/30 * * * *'
+        workflow_dispatch:
+        jobs:
+          refresh:
+              runs-on: ubuntu-latest
+                  steps:
+                      - uses: actions/checkout@v3
+                          - name: Set up Python
+                                uses: actions/setup-python@v4
+                                      with:
+                                              python-version: '3.11'
+                                                  - name: Install dependencies
+                                                        run: pip install -r requirements.txt
+                                                            - name: Run refresh script
+                                                                  env:
+                                                                          PAT_TOKEN: 5RFwGx2EyDUpdWZf1SCvtOe7eMKUqsT26iU0OFd6RaggfVoyY86TJQQJ99CCACAAAAADWJhNAAASAZDO3kA8
+                                                                                  AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+                                                                                        run: pythonna mree:f rAeustho_-dRaesfhrbeosahr dQ.Ap yDashboard
+                                                                                        on:
+                                                                                          schedule:
+                                                                                              - cron: '*/30 * * * *'
+                                                                                                workflow_dispatch:
+                                                                                                jobs:
+                                                                                                  refresh:
+                                                                                                      runs-on: ubuntu-latest
+                                                                                                          steps:
+                                                                                                              - uses: actions/checkout@v3
+                                                                                                                  - name: Set up Python
+                                                                                                                        uses: actions/setup-python@v4
+                                                                                                                              with:
+                                                                                                                                      python-version: '3.11'
+                                                                                                                                          - name: Install dependencies
+                                                                                                                                                run: pip install -r requirements.txt
+                                                                                                                                                    - name: Run refresh script
+                                                                                                                                                          env:
+                                                                                                                                                                  PAT_TOKEN: 5RFwGx2EyDUpdWZf1SCvtOe7eMKUqsT26iU0OFd6RaggfVoyY86TJQQJ99CCACAAAAADWJhNAAASAZDO3kA8
+                                                                                                                                                                          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+                                                                                                                                                                                run: python refresh_dashboard.py
